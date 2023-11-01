@@ -52,7 +52,7 @@ app.post('/cars', (req, res) => {
 
 app.put('/cars/:id', (req, res) => {
     const car = req.body;
-    db.run('UPDATE cars SET make = ?, model = ?, year = ?, price = ? WHERE id = ?',car.make, car.model, car.year, car.price,  function(err) {
+    db.run('UPDATE cars SET make = ?, model = ?, year = ?, price = ? WHERE id = ?',car.make, car.model, car.year, car.price, req.params.id,  function(err) {
         if (err) {
             res.status(500).send(err);
         } else {
